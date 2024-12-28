@@ -4,6 +4,7 @@ const {
   addJob,
   updateJob,
   deleteJob,
+  getJobById,
 } = require("../controllers/jobController");
 const { protect } = require("../middleware/authMiddleware");
 const router = express.Router();
@@ -15,6 +16,7 @@ router
 
 router
   .route("/:id")
+  .get(protect, getJobById) // Get job by id
   .put(protect, updateJob) // Update a job
   .delete(protect, deleteJob); // Delete a job
 
